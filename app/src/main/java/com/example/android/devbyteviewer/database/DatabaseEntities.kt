@@ -32,7 +32,7 @@ data class DatabaseVideo constructor(
 
 fun List<DatabaseVideo>.asDomainModel(): List<Video> {
     return map {
-        Video (
+        Video(
                 url = it.url,
                 title = it.title,
                 description = it.description,

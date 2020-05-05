@@ -24,7 +24,7 @@ import androidx.room.*
 @Dao
 interface VideoDao {
     @Query("select * from databasevideo")
-    fun getVideos(): LiveData<DatabaseVideo>
+    fun getVideos(): LiveData<List<DatabaseVideo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg videos: DatabaseVideo)
@@ -32,6 +32,7 @@ interface VideoDao {
 
 @Database(entities = [DatabaseVideo::class], version = 1)
 abstract class VideosDatabase : RoomDatabase() {
+    abstract val videoDao: VideoDao
 }
 
 private lateinit var INSTANCE: VideosDatabase
